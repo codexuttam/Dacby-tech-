@@ -1,6 +1,6 @@
 [build]
-  command = "npm install && npm run build"
-  publish = "dist"
+  command = "cd hacker-news-clone/frontend && npm install && npm run build"
+  publish = "hacker-news-clone/frontend/dist"
 
 [[redirects]]
   from = "/*"
