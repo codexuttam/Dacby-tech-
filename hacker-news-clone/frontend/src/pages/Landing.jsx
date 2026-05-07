@@ -153,7 +153,7 @@ const Landing = () => {
         >
           {/* Main Tablet Mockup */}
           <motion.img 
-            src="/home/codebloodedsash/.gemini/antigravity/brain/25385562-0575-4d9e-9b69-7c493ec2f002/dashboard_tablet_mockup_1778161332273.png"
+            src="/assets/hero-tablet.png"
             alt="Dashboard Preview"
             style={{ 
               width: '100%', 
@@ -174,7 +174,7 @@ const Landing = () => {
 
           {/* Floating Cards (Generated Group) */}
           <motion.img 
-            src="/home/codebloodedsash/.gemini/antigravity/brain/25385562-0575-4d9e-9b69-7c493ec2f002/ui_card_elements_1778161359977.png"
+            src="/assets/floating-cards.png"
             alt="Floating UI Elements"
             style={{ 
               position: 'absolute',
