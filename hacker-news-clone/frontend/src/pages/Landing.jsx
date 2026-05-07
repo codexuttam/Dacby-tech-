@@ -50,8 +50,7 @@ const Landing = () => {
         initial="hidden"
         animate="visible"
         style={{ 
-          textAlign: 'center', 
-          padding: '120px 20px', 
+          padding: '120px 20px 40px', 
           position: 'relative' 
         }}
       >
@@ -59,86 +58,121 @@ const Landing = () => {
         <div style={{ 
           position: 'absolute', 
           top: '10%', 
-          left: '20%', 
-          width: '300px', 
-          height: '300px', 
-          background: 'rgba(255, 0, 122, 0.2)', 
-          filter: 'blur(100px)', 
+          left: '10%', 
+          width: '400px', 
+          height: '400px', 
+          background: 'rgba(255, 0, 122, 0.15)', 
+          filter: 'blur(120px)', 
           borderRadius: '50%', 
           zIndex: -1,
           opacity: 0.3
         }}></div>
+
         <div style={{ 
-          position: 'absolute', 
-          bottom: '10%', 
-          right: '20%', 
-          width: '300px', 
-          height: '300px', 
-          background: 'rgba(244, 63, 94, 0.2)', 
-          filter: 'blur(100px)', 
-          borderRadius: '50%', 
-          zIndex: -1,
-          opacity: 0.3
-        }}></div>
+          display: 'flex', 
+          flexDirection: 'row', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          gap: '60px',
+          flexWrap: 'wrap'
+        }}>
+          {/* Left Side: Content */}
+          <div style={{ flex: '1', minWidth: '320px', textAlign: 'left' }}>
+            <motion.div variants={itemVariants}>
+              <div style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                padding: '8px 16px', 
+                background: 'rgba(255, 0, 122, 0.1)', 
+                border: '1px solid rgba(255, 0, 122, 0.2)', 
+                borderRadius: '100px',
+                color: 'var(--primary)',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                marginBottom: '24px'
+              }}>
+                <Cpu size={16} />
+                Powered by Next-Gen Web Scraping
+              </div>
+            </motion.div>
 
-        <motion.div variants={itemVariants}>
-          <div style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: '8px', 
-            padding: '8px 16px', 
-            background: 'rgba(255, 0, 122, 0.1)', 
-            border: '1px solid rgba(255, 0, 122, 0.2)', 
-            borderRadius: '100px',
-            color: 'var(--primary)',
-            fontSize: '0.85rem',
-            fontWeight: 600,
-            marginBottom: '24px'
-          }}>
-            <Cpu size={16} />
-            Powered by Next-Gen Web Scraping
+            <motion.h1 variants={itemVariants} style={{ 
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
+              fontWeight: 900, 
+              lineHeight: 1.1, 
+              marginBottom: '24px',
+              letterSpacing: '-2px'
+            }}>
+              Hacker News <br />
+              <span style={{ 
+                background: 'linear-gradient(to right, var(--primary), var(--accent))', 
+                WebkitBackgroundClip: 'text', 
+                WebkitTextFillColor: 'transparent' 
+              }}>Reimagined.</span>
+            </motion.h1>
+
+            <motion.p variants={itemVariants} style={{ 
+              fontSize: '1.25rem', 
+              color: 'var(--text-muted)', 
+              maxWidth: '600px', 
+              marginBottom: '40px',
+              lineHeight: 1.6
+            }}>
+              The ultimate platform for developers to track the pulse of tech. 
+              Aggregated, curated, and styled with a premium cyber-dark aesthetic.
+            </motion.p>
+
+            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '16px' }}>
+              <Link to="/register" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                Get Started <ArrowRight size={20} />
+              </Link>
+              <Link to="/feed" className="btn" style={{ 
+                background: 'rgba(255,255,255,0.05)', 
+                border: '1px solid var(--glass-border)',
+                padding: '1rem 2rem',
+                fontSize: '1.1rem'
+              }}>
+                View Feed
+              </Link>
+            </motion.div>
           </div>
-        </motion.div>
 
-        <motion.h1 variants={itemVariants} style={{ 
-          fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', 
-          fontWeight: 900, 
-          lineHeight: 1.1, 
-          marginBottom: '24px',
-          letterSpacing: '-2px'
-        }}>
-          Hacker News <br />
-          <span style={{ 
-            background: 'linear-gradient(to right, var(--primary), var(--accent))', 
-            WebkitBackgroundClip: 'text', 
-            WebkitTextFillColor: 'transparent' 
-          }}>Reimagined.</span>
-        </motion.h1>
-
-        <motion.p variants={itemVariants} style={{ 
-          fontSize: '1.25rem', 
-          color: 'var(--text-muted)', 
-          maxWidth: '700px', 
-          margin: '0 auto 40px',
-          lineHeight: 1.6
-        }}>
-          The ultimate platform for developers to track the pulse of tech. 
-          Aggregated, curated, and styled with a premium cyber-dark aesthetic.
-        </motion.p>
-
-        <motion.div variants={itemVariants} style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-          <Link to="/register" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-            Get Started <ArrowRight size={20} />
-          </Link>
-          <Link to="/feed" className="btn" style={{ 
-            background: 'rgba(255,255,255,0.05)', 
-            border: '1px solid var(--glass-border)',
-            padding: '1rem 2rem',
-            fontSize: '1.1rem'
-          }}>
-            View Feed
-          </Link>
-        </motion.div>
+          {/* Right Side: Infographic */}
+          <motion.div 
+            variants={itemVariants}
+            style={{ 
+              flex: '1', 
+              minWidth: '320px', 
+              display: 'flex', 
+              justifyContent: 'center',
+              position: 'relative'
+            }}
+          >
+            <motion.div
+              animate={{ 
+                y: [0, -10, 0],
+                rotate: [0, 1, 0]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                width: '100%',
+                maxWidth: '500px',
+                maskImage: 'radial-gradient(circle, black 80%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(circle, black 80%, transparent 100%)'
+              }}
+            >
+              <img 
+                src="/assets/hero-infographic.png" 
+                alt="Technical Infographic" 
+                style={{ 
+                  width: '100%', 
+                  filter: 'drop-shadow(0 0 30px var(--primary-glow))' 
+                }}
+              />
+            </motion.div>
+          </motion.div>
+        </div>
 
         {/* Hero Visual Section */}
         <motion.div 
