@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -19,7 +20,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="container" style={{ paddingTop: '80px', paddingBottom: '40px' }}>
+      <div className="container" style={{ paddingTop: '80px', paddingBottom: '40px', minHeight: 'calc(100vh - 150px)' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -31,6 +32,7 @@ function App() {
           } />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
