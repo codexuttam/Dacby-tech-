@@ -16,6 +16,11 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+// Root Route for Health Checks
+app.get('/', (req, res) => {
+  res.send('NeoScrape API is running...');
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/stories', storyRoutes);
