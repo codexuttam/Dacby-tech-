@@ -12,6 +12,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return;
+    }
     try {
       await register(username, password);
       navigate('/');
