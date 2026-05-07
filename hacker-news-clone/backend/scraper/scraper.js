@@ -28,10 +28,18 @@ const scrapeHackerNews = async () => {
       const author = subtext.find('.hnuser').text() || 'anonymous';
       const postedAt = subtext.find('.age').attr('title') || subtext.find('.age').text() || 'unknown';
 
+      // Extract comments count
+      const commentsText = subtext.find('a').last().text();
+      let commentsCount = 0;
+      if (commentsText && commentsText.includes('comment')) {
+        commentsCount = parseInt(commentsText.replace(/\D/g, ''), 10) || 0;
+      }
+
       stories.push({
         title,
         url,
         points,
+        commentsCount,
         author,
         postedAt
       });

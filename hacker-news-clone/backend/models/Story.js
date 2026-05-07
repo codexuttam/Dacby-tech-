@@ -14,6 +14,10 @@ const StorySchema = new mongoose.Schema({
     required: true,
     default: 0
   },
+  commentsCount: {
+    type: Number,
+    default: 0
+  },
   author: {
     type: String,
     required: true
