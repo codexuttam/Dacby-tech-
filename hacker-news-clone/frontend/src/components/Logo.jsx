@@ -31,8 +31,8 @@ const Logo = ({ size = 32 }) => {
             y2="40"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#3b82f6" />
-            <stop offset="1" stopColor="#8b5cf6" />
+            <stop stopColor="#ff007a" />
+            <stop offset="1" stopColor="#f43f5e" />
           </linearGradient>
         </defs>
       </svg>
@@ -41,7 +41,7 @@ const Logo = ({ size = 32 }) => {
           fontWeight: 800,
           fontSize: '1.5rem',
           letterSpacing: '-0.5px',
-          background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+          background: 'linear-gradient(to right, #ff007a, #f43f5e)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           fontFamily: "'Outfit', sans-serif"

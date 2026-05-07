@@ -1,15 +1,19 @@
 :root {
-  --bg-dark: #020617;
-  --bg-card: rgba(15, 23, 42, 0.5);
-  --primary: #3b82f6;
-  --primary-glow: rgba(59, 130, 246, 0.5);
-  --accent: #8b5cf6;
-  --accent-glow: rgba(139, 92, 246, 0.5);
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.5);
+  --primary: #ff007a;
+  --primary-glow: rgba(255, 0, 122, 0.4);
+  --accent: #f43f5e;
+  --accent-glow: rgba(244, 63, 94, 0.4);
   --success: #10b981;
-  --text-main: #f8fafc;
-  --text-muted: #64748b;
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 8px 32px 0 rgba(255, 0, 122, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -22,14 +26,19 @@ body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-dark);
   background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.3) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.15) 0, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(330, 100%, 15%, 1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(330, 100%, 30%, 0.15) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(330, 100%, 20%, 0.1) 0, transparent 50%);
   background-attachment: fixed;
   color: var(--text-main);
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 body::before {

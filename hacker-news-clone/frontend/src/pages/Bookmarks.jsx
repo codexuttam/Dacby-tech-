@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import StoryCard from '../components/StoryCard';
 import { AuthContext } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import { motion } from 'framer-motion';
 
 const Bookmarks = () => {
   const { user, setUser } = useContext(AuthContext);
+  const { addToast } = useToast();
 
   const handleBookmarkToggle = (isNowBookmarked, storyId) => {
     // If we unbookmark from this page, we might want to remove it locally from the UI
     if (!isNowBookmarked && user) {
       const newBookmarks = user.bookmarks.filter(b => b._id !== storyId);
       setUser({ ...user, bookmarks: newBookmarks });
+      addToast("Bookmark removed", "info");
     }
   };
 

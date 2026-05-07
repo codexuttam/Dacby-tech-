@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import { BookmarkIcon, ExternalLink, Clock, User, ArrowUpCircle, MessageSquare } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import axios from 'axios';
 
 const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
   const { user } = useContext(AuthContext);
+  const { addToast } = useToast();
   const [isBookmarked, setIsBookmarked] = useState(isBookmarkedInitial);
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +19,7 @@ const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
   const handleBookmark = async (e) => {
     e.preventDefault();
     if (!user) {
-      alert("Please login to bookmark stories!");
+      addToast("Please login to bookmark stories!", "error");
       return;
     }
     try {
@@ -29,6 +31,11 @@ const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
       const updatedBookmarks = res.data.map(b => typeof b === 'string' ? b : b._id);
       const isNowBookmarked = updatedBookmarks.includes(story._id);
       setIsBookmarked(isNowBookmarked);
+      
+      if (isNowBookmarked) {
+        addToast("Added to bookmarks", "success");
+      }
+      
       if (onBookmarkToggle) {
         onBookmarkToggle(isNowBookmarked, story._id);
       }

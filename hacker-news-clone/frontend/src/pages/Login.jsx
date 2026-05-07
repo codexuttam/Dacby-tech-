@@ -1,22 +1,25 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import { motion } from 'framer-motion';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const { login } = useContext(AuthContext);
+  const { addToast } = useToast();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await login(username, password);
-      navigate('/');
+      addToast(`Welcome back, ${username}!`, "success");
+      navigate('/feed');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      const errorMsg = err.response?.data?.message || 'Login failed';
+      addToast(errorMsg, "error");
     }
   };
 
@@ -29,7 +32,6 @@ const Login = () => {
         style={{ padding: '2.5rem', width: '100%', maxWidth: '400px' }}
       >
         <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center', color: 'var(--primary)' }}>Welcome Back</h2>
-        {error && <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Username</label>

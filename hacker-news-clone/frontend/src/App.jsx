@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Bookmarks from './pages/Bookmarks';
@@ -20,9 +21,10 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="container" style={{ paddingTop: '80px', paddingBottom: '40px', minHeight: 'calc(100vh - 150px)' }}>
+      <div className="container" style={{ paddingTop: '100px', paddingBottom: '40px', minHeight: 'calc(100vh - 150px)' }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/feed" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/bookmarks" element={

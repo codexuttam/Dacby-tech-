@@ -11,9 +11,9 @@ const Register = () => {
     fullName: '',
     password: ''
   });
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { register } = useContext(AuthContext);
+  const { addToast } = useToast();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,18 +23,19 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      addToast('Password must be at least 6 characters long', 'error');
       return;
     }
     
     setLoading(true);
-    setError('');
     
     try {
       await register(formData.username, formData.email, formData.fullName, formData.password);
-      navigate('/');
+      addToast(`Welcome to Neoscrape, ${formData.username}!`, 'success');
+      navigate('/feed');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Try again.');
+      const errorMsg = err.response?.data?.message || 'Registration failed. Try again.';
+      addToast(errorMsg, 'error');
     } finally {
       setLoading(false);
     }
@@ -57,8 +58,8 @@ const Register = () => {
           padding: '3rem', 
           width: '100%', 
           maxWidth: '500px',
-          border: '1px solid rgba(59, 130, 246, 0.3)',
-          boxShadow: '0 0 40px rgba(59, 130, 246, 0.1)',
+          border: '1px solid var(--primary)',
+          boxShadow: '0 0 40px var(--primary-glow)',
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -69,7 +70,7 @@ const Register = () => {
           left: 0, 
           width: '100%', 
           height: '4px', 
-          background: 'linear-gradient(to right, #3b82f6, #8b5cf6)' 
+          background: 'linear-gradient(to right, var(--primary), var(--accent))' 
         }} />
         
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
@@ -80,7 +81,7 @@ const Register = () => {
             style={{ 
               width: '60px', 
               height: '60px', 
-              background: 'rgba(59, 130, 246, 0.1)', 
+              background: 'rgba(255, 0, 122, 0.1)', 
               borderRadius: '15px', 
               display: 'flex', 
               alignItems: 'center', 
@@ -88,7 +89,7 @@ const Register = () => {
               margin: '0 auto 1rem' 
             }}
           >
-            <UserPlus color="#3b82f6" size={30} />
+            <UserPlus color="var(--primary)" size={30} />
           </motion.div>
           <h2 style={{ 
             fontSize: '2.25rem', 
@@ -100,30 +101,6 @@ const Register = () => {
           <p style={{ color: 'var(--text-muted)' }}>Access real-time tech insights and bookmark your favorites.</p>
         </div>
 
-        <AnimatePresence>
-          {error && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              style={{ 
-                background: 'rgba(239, 68, 68, 0.1)', 
-                color: '#ef4444', 
-                padding: '0.75rem 1rem', 
-                borderRadius: '12px', 
-                marginBottom: '1.5rem', 
-                fontSize: '0.9rem',
-                border: '1px solid rgba(239, 68, 68, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
-            >
-              <ShieldCheck size={18} />
-              {error}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div className="form-group">
@@ -195,7 +172,7 @@ const Register = () => {
           </div>
 
           <motion.button 
-            whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' }}
+            whileHover={{ scale: 1.02, boxShadow: '0 0 20px var(--primary-glow)' }}
             whileTap={{ scale: 0.98 }}
             type="submit" 
             disabled={loading}
@@ -209,7 +186,7 @@ const Register = () => {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '10px',
-              background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+              background: 'linear-gradient(to right, var(--primary), var(--accent))',
               opacity: loading ? 0.7 : 1
             }}
           >
@@ -222,7 +199,7 @@ const Register = () => {
         </form>
 
         <div style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-          Already part of the network? <Link to="/login" style={{ color: '#3b82f6', fontWeight: 600 }}>Sign In</Link>
+          Already part of the network? <Link to="/login" style={{ color: 'var(--primary)', fontWeight: 600 }}>Sign In</Link>
         </div>
       </motion.div>
     </div>

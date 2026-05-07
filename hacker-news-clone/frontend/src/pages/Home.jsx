@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import StoryCard from '../components/StoryCard';
 import { AuthContext } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import { motion } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
 
@@ -10,6 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [scraping, setScraping] = useState(false);
   const { user } = useContext(AuthContext);
+  const { addToast } = useToast();
 
   const fetchStories = async () => {
     try {
@@ -18,6 +20,7 @@ const Home = () => {
       setStories(res.data);
     } catch (error) {
       console.error(error);
+      addToast("Failed to fetch stories", "error");
     } finally {
       setLoading(false);
     }
@@ -30,10 +33,13 @@ const Home = () => {
   const handleScrape = async () => {
     try {
       setScraping(true);
+      addToast("Syncing with Hacker News...", "info");
       await axios.post('http://localhost:5000/api/scrape');
       await fetchStories();
+      addToast("Successfully synced stories!", "success");
     } catch (error) {
       console.error("Scrape failed", error);
+      addToast("Failed to sync stories", "error");
     } finally {
       setScraping(false);
     }
