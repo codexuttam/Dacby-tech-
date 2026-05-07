@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -18,7 +19,15 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'User or Email already exists' });
     }
 
-    const user = await User.create({ username, email, fullName, password });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const user = await User.create({ 
+      username, 
+      email, 
+      fullName, 
+      password: hashedPassword 
+    });
     if (user) {
       res.status(201).json({
         _id: user._id,
@@ -29,6 +38,7 @@ const registerUser = async (req, res) => {
       res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
+    console.error('Registration Error:', error.stack || error);
     res.status(500).json({ message: error.message });
   }
 };
