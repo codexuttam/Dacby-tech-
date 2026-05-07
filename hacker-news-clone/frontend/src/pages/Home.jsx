@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import StoryCard from '../components/StoryCard';
 import { AuthContext } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
@@ -16,7 +15,7 @@ const Home = () => {
   const fetchStories = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/stories');
+      const res = await api.get('/stories');
       setStories(res.data);
     } catch (error) {
       console.error(error);
@@ -34,7 +33,7 @@ const Home = () => {
     try {
       setScraping(true);
       addToast("Syncing with Hacker News...", "info");
-      await axios.post('http://localhost:5000/api/scrape');
+      await api.post('/scrape');
       await fetchStories();
       addToast("Successfully synced stories!", "success");
     } catch (error) {

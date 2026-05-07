@@ -4,7 +4,7 @@ import { BookmarkIcon, ExternalLink, Clock, User, ArrowUpCircle, MessageSquare }
 import { formatDistanceToNow } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import axios from 'axios';
+import api from '../api/axios';
 
 const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
   const { user } = useContext(AuthContext);
@@ -24,10 +24,7 @@ const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
     }
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
-      const res = await axios.post(`http://localhost:5000/api/stories/${story._id}/bookmark`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const res = await api.post(`/stories/${story._id}/bookmark`);
       const updatedBookmarks = res.data.map(b => typeof b === 'string' ? b : b._id);
       const isNowBookmarked = updatedBookmarks.includes(story._id);
       setIsBookmarked(isNowBookmarked);
