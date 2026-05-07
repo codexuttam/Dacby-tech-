@@ -174,110 +174,150 @@ const Landing = () => {
           </motion.div>
         </div>
 
-        {/* Hero Visual Section */}
-        <motion.div 
-          variants={itemVariants}
-          style={{ 
-            marginTop: '80px', 
-            position: 'relative', 
-            display: 'flex', 
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '600px',
-            width: '100%'
-          }}
-        >
-          {/* Main Tablet Mockup */}
+        </div>
+      </motion.section>
+
+      {/* Feature Section 1: Unified Dashboard (Image Left, Text Right) */}
+      <section style={{ padding: '80px 0', overflow: 'hidden' }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '80px', 
+          flexWrap: 'wrap-reverse',
+          justifyContent: 'center'
+        }}>
+          {/* Visual: Tablet */}
           <motion.div
-            style={{
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ 
+              flex: '1', 
+              minWidth: '320px', 
+              display: 'flex', 
+              justifyContent: 'center',
               position: 'relative',
-              zIndex: 2,
-              width: '100%',
-              maxWidth: '700px',
-              maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)'
-            }}
-            animate={{ 
-              y: [0, -15, 0],
-            }}
-            transition={{ 
-              duration: 7, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+              maskImage: 'radial-gradient(circle, black 80%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 80%, transparent 100%)'
             }}
           >
-            <img 
-              src="/assets/hero-tablet.png"
-              alt="Dashboard Preview"
+            <motion.img 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              src="/assets/hero-tablet.png" 
+              alt="Unified Dashboard" 
               style={{ 
                 width: '100%', 
-                filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.8))',
-                borderRadius: '40px'
+                maxWidth: '600px', 
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))',
+                borderRadius: '24px'
               }}
             />
           </motion.div>
 
-          {/* Floating Cards (Generated Group) */}
+          {/* Text: Dashboard Content */}
+          <div style={{ flex: '1', minWidth: '320px' }}>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '24px' }}>Deep Technical Intelligence</h2>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '32px' }}>
+                Experience a unified dashboard that tracks performance metrics, active threats, and system health in real-time. 
+                Neoscrape is engineered for developers who demand high-fidelity data and zero latency.
+              </p>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+                  <div style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%' }}></div>
+                  Real-time Network Activity Tracking
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+                  <div style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%' }}></div>
+                  Advanced Traffic Distribution Charts
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+                  <div style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%' }}></div>
+                  Live Event Logging & Monitoring
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Section 2: Smart Curation (Text Left, Image Right) */}
+      <section style={{ padding: '80px 0', overflow: 'hidden' }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '80px', 
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          {/* Text: Curation Content */}
+          <div style={{ flex: '1', minWidth: '320px' }}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '24px' }}>Curated for the Modern Developer</h2>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '32px' }}>
+                Stay ahead of the curve with AI-driven curation. We filter the noise of Hacker News to bring you 
+                the most relevant technical breakthroughs, industry shifts, and gadgets that matter.
+              </p>
+              <div style={{ display: 'flex', gap: '24px' }}>
+                <div className="glass-panel" style={{ padding: '20px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)' }}>500+</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Stories Daily</div>
+                </div>
+                <div className="glass-panel" style={{ padding: '20px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--accent)' }}>0ms</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Sync Latency</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Visual: Floating Cards */}
           <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             style={{ 
-              position: 'absolute',
-              top: '-10%',
-              right: '-5%',
-              width: '450px',
-              zIndex: 3,
-              maskImage: 'radial-gradient(circle, black 60%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 100%)'
-            }}
-            animate={{ 
-              y: [0, 30, 0],
-              x: [0, 10, 0],
-              rotate: [0, 3, 0]
-            }}
-            transition={{ 
-              duration: 10, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+              flex: '1', 
+              minWidth: '320px', 
+              display: 'flex', 
+              justifyContent: 'center',
+              position: 'relative',
+              maskImage: 'radial-gradient(circle, black 80%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 80%, transparent 100%)'
             }}
           >
-            <img 
-              src="/assets/floating-cards.png"
-              alt="Floating UI Elements"
+            <motion.img 
+              animate={{ 
+                y: [0, 20, 0],
+                rotate: [0, 2, 0]
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              src="/assets/floating-cards.png" 
+              alt="Smart Curation" 
               style={{ 
-                width: '100%',
-                filter: 'drop-shadow(0 10px 40px rgba(255, 0, 122, 0.3))'
+                width: '100%', 
+                maxWidth: '600px', 
+                filter: 'drop-shadow(0 10px 40px rgba(255, 0, 122, 0.2))'
               }}
             />
           </motion.div>
+        </div>
+      </section>
 
-          {/* Additional Floating Element (Left) */}
-          <motion.div
-            style={{
-              position: 'absolute',
-              top: '20%',
-              left: '10%',
-              width: '120px',
-              height: '120px',
-              background: 'linear-gradient(135deg, var(--primary), var(--accent))',
-              borderRadius: '24px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1,
-              opacity: 0.2,
-              filter: 'blur(40px)'
-            }}
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.4, 0.2]
-            }}
-            transition={{ 
-              duration: 5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          />
-        </motion.div>
-      </motion.section>
+      </section>
 
       {/* Features Grid */}
       <section style={{ padding: '80px 0' }}>
