@@ -24,7 +24,11 @@ function App() {
       <div className="container" style={{ paddingTop: '100px', paddingBottom: '40px', minHeight: 'calc(100vh - 150px)' }}>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/feed" element={<Home />} />
+          <Route path="/feed" element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/bookmarks" element={
