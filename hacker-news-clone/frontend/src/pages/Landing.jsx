@@ -148,52 +148,72 @@ const Landing = () => {
             position: 'relative', 
             display: 'flex', 
             justifyContent: 'center',
-            height: '500px'
+            alignItems: 'center',
+            height: '600px',
+            width: '100%'
           }}
         >
           {/* Main Tablet Mockup */}
-          <motion.img 
-            src="/assets/hero-tablet.png"
-            alt="Dashboard Preview"
-            style={{ 
-              width: '100%', 
-              maxWidth: '800px', 
-              zIndex: 2, 
-              filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))',
-              transform: 'perspective(1000px) rotateX(10deg)'
+          <motion.div
+            style={{
+              position: 'relative',
+              zIndex: 2,
+              width: '100%',
+              maxWidth: '700px',
+              maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)'
             }}
             animate={{ 
-              y: [0, -10, 0],
+              y: [0, -15, 0],
             }}
             transition={{ 
-              duration: 6, 
+              duration: 7, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-          />
+          >
+            <img 
+              src="/assets/hero-tablet.png"
+              alt="Dashboard Preview"
+              style={{ 
+                width: '100%', 
+                filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.8))',
+                borderRadius: '40px'
+              }}
+            />
+          </motion.div>
 
           {/* Floating Cards (Generated Group) */}
-          <motion.img 
-            src="/assets/floating-cards.png"
-            alt="Floating UI Elements"
+          <motion.div
             style={{ 
               position: 'absolute',
               top: '-10%',
-              right: '5%',
-              width: '400px',
+              right: '-5%',
+              width: '450px',
               zIndex: 3,
-              filter: 'drop-shadow(0 10px 30px rgba(255, 0, 122, 0.2))'
+              maskImage: 'radial-gradient(circle, black 60%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 100%)'
             }}
             animate={{ 
-              y: [0, 20, 0],
-              rotate: [0, 2, 0]
+              y: [0, 30, 0],
+              x: [0, 10, 0],
+              rotate: [0, 3, 0]
             }}
             transition={{ 
-              duration: 8, 
+              duration: 10, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-          />
+          >
+            <img 
+              src="/assets/floating-cards.png"
+              alt="Floating UI Elements"
+              style={{ 
+                width: '100%',
+                filter: 'drop-shadow(0 10px 40px rgba(255, 0, 122, 0.3))'
+              }}
+            />
+          </motion.div>
 
           {/* Additional Floating Element (Left) */}
           <motion.div
