@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BookmarkIcon, ExternalLink, Clock, User, ArrowUpCircle } from 'lucide-react';
+import { BookmarkIcon, ExternalLink, Clock, User, ArrowUpCircle, MessageSquare } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
@@ -71,6 +71,9 @@ const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <Clock size={14} /> {story.postedAt}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <MessageSquare size={14} /> {story.commentsCount || 0} comments
           </div>
         </div>
       </div>
