@@ -1,8 +1,0 @@
-[build]
-  command = "cd hacker-news-clone/frontend && npm install && npm run build"
-  publish = "hacker-news-clone/frontend/dist"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
