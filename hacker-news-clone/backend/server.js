@@ -20,6 +20,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/stories', storyRoutes);
 app.use('/api', scrapeRoutes);
 
+// Error Middleware
+const { errorHandler } = require('./middleware/errorMiddleware');
+app.use(errorHandler);
+
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
