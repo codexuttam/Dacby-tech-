@@ -26,10 +26,7 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 app.use(errorHandler);
 
 // Database Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log('Connected to MongoDB');
   
   // Run scraper automatically on server start
