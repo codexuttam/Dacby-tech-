@@ -49,7 +49,7 @@ const scrapeHackerNews = async () => {
       await Story.findOneAndUpdate(
         { url: storyData.url },
         { $set: storyData },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     }
     console.log('Scrape completed and saved to DB.');
