@@ -33,6 +33,12 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log('Running initial scraper...');
   scrapeHackerNews().catch(err => console.error('Initial scrape failed:', err));
 
+  // Run scraper every 10 minutes to keep data fresh
+  setInterval(() => {
+    console.log('Running periodic scrape...');
+    scrapeHackerNews().catch(err => console.error('Periodic scrape failed:', err));
+  }, 10 * 60 * 1000);
+
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
