@@ -173,8 +173,7 @@ const Landing = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        </div>
+        
       </motion.section>
 
       {/* Feature Section 1: Unified Dashboard (Image Left, Text Right) */}
@@ -315,8 +314,6 @@ const Landing = () => {
             />
           </motion.div>
         </div>
-      </section>
-
       </section>
 
       {/* Features Grid */}
