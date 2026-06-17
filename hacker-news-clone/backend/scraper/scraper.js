@@ -10,7 +10,7 @@ const scrapeHackerNews = async () => {
     
     const stories = [];
     
-    $('.athing').slice(0, 10).each((i, el) => {
+    $('.athing').slice(0, 15).each((i, el) => {
       const id = $(el).attr('id');
       const titlebox = $(el).find('.titleline > a');
       const title = titlebox.text();
