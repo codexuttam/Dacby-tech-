@@ -1,9 +1,9 @@
 # Hacker News Clone (MERN Stack)
 
-A full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js). This project features a web scraper that fetches the top 10 stories from Hacker News, a robust JWT-based authentication system, and a premium, animated frontend.
+A full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js). This project features a web scraper that fetches the top 15 stories from Hacker News, a robust JWT-based authentication system, and a premium, animated frontend.
 
 ## Features
-- **Automated Web Scraper:** Scrapes the top 10 stories from Hacker News automatically on server start and via API.
+- **Automated Web Scraper:** Scrapes the top 15 stories from Hacker News automatically on server start and via API.
 - **User Authentication:** Secure JWT-based registration and login system.
 - **Story Management:** View top stories and save your favorites using the bookmark feature.
 - **Premium UI:** Glassmorphism design system with fluid animations powered by Framer Motion.
