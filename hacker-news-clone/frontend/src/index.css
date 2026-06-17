@@ -151,3 +151,7 @@ a {
 .spin-anim {
   animation: spin 1s linear infinite;
 }
+
+.text-center {
+  text-align: center;
+}
