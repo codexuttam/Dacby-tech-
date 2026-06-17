@@ -36,6 +36,8 @@ function App() {
               <Bookmarks />
             </ProtectedRoute>
           } />
+          {/* Catch-all route to redirect unknown paths to landing */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
       <Footer />
