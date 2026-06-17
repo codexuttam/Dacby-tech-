@@ -52,7 +52,7 @@ const scrapeHackerNews = async () => {
         { upsert: true, returnDocument: 'after' }
       );
     }
-    console.log('Scrape completed and saved to DB.');
+    console.log(`Scrape completed. ${stories.length} stories saved to DB.`);
     return stories;
   } catch (error) {
     console.error('Error during scraping:', error);
