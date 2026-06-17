@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log('Running initial scraper...');
   scrapeHackerNews().catch(err => console.error('Initial scrape failed:', err));
 
-  // Run scraper every 10 minutes to keep data fresh
+  // Run scraper every 10 minutes (10 * 60 * 1000 ms) to keep data fresh and updated
   setInterval(() => {
     console.log('Running periodic scrape...');
     scrapeHackerNews().catch(err => console.error('Periodic scrape failed:', err));
