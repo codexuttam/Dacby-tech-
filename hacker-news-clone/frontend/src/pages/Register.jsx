@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Lock, ShieldCheck, ArrowRight, UserPlus } from 'lucide-react';
 
 const Register = () => {
+  // State for registration form data
   const [formData, setFormData] = useState({
     username: '',
     email: '',

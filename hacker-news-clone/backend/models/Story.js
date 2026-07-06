@@ -31,4 +31,5 @@ const StorySchema = new mongoose.Schema({
 // Avoid duplicate stories by URL, but allow updating points
 StorySchema.index({ url: 1 }, { unique: true });
 
+// Export the Story model
 module.exports = mongoose.model('Story', StorySchema);

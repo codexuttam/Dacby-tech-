@@ -5,6 +5,7 @@ import { useToast } from '../context/ToastContext';
 import { motion } from 'framer-motion';
 
 const Login = () => {
+  // State for login form fields
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useContext(AuthContext);

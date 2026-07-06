@@ -18,6 +18,7 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  // Main application router and layout
   return (
     <Router>
       <Navbar />

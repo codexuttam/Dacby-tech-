@@ -7,6 +7,7 @@ import { BookmarkIcon, LogOutIcon, UserIcon, Menu, ChevronDown, Rss } from 'luci
 import Logo from './Logo';
 
 const Navbar = () => {
+  // Access auth context and routing hooks
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();

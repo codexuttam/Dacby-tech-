@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
 
 const Home = () => {
+  // State for stories and loading status
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scraping, setScraping] = useState(false);
