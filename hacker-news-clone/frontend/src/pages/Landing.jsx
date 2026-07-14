@@ -384,3 +384,5 @@ const Landing = () => {
 };
 
 export default Landing;
+
+// core update 7
