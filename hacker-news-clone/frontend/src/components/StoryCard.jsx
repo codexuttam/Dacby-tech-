@@ -108,3 +108,5 @@ const StoryCard = ({ story, index, isBookmarkedInitial, onBookmarkToggle }) => {
 };
 
 export default StoryCard;
+
+// core update 10
