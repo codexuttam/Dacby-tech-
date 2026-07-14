@@ -15,3 +15,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </AuthProvider>
   </React.StrictMode>,
 );
+
+// core update 1
