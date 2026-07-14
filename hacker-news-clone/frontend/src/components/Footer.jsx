@@ -25,3 +25,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// core update 9
