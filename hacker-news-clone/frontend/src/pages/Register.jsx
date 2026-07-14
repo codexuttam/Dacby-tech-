@@ -209,3 +209,5 @@ const Register = () => {
 };
 
 export default Register;
+
+// core update 6
